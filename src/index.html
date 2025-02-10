@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>反応速度チャレンジ</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <div id="start-screen" class="screen">
+            <h1>反応速度チャレンジ</h1>
+            <p class="instructions">
+                画面の色が変わったらすぐにタップ/クリックしてください！<br>
+                あなたの反応速度を測定します。
+            </p>
+            <button id="start-button" class="primary-button">スタート</button>
+        </div>
+
+        <div id="game-screen" class="screen hidden">
+            <div id="message">準備中...</div>
+        </div>
+
+        <div id="result-screen" class="screen hidden">
+            <h2>結果</h2>
+            <div class="result-time">
+                <span id="reaction-time">0</span>
+                <span class="unit">ミリ秒</span>
+            </div>
+            <div id="best-time-container">
+                自己ベスト: <span id="best-time">---</span> ミリ秒
+            </div>
+            <div id="new-record" class="hidden">新記録！🎉</div>
+            <button id="retry-button" class="primary-button">もう一度プレイ</button>
+        </div>
+    </div>
+    <script src="js/game.js"></script>
+</body>
+</html>
