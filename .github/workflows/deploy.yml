@@ -7,14 +7,12 @@ on:
 
 permissions:
   contents: read
+  pages: write
+  id-token: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,17 +20,18 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
+      - name: List contents of src directory
+        run: ls -la src/
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
+          name: github-pages
           path: src
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
