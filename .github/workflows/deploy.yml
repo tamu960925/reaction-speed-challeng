@@ -21,13 +21,22 @@ jobs:
         uses: actions/configure-pages@v4
       
       - name: List contents of src directory
-        run: ls -la src/
+        run: |
+          echo "Contents of src directory:"
+          ls -la src/
+      
+      - name: Copy static files
+        run: |
+          # Ensure the deployment directory exists
+          mkdir -p _site
+          # Copy all files from src to _site
+          cp -r src/* _site/
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages
-          path: src
+          path: _site
 
   deploy:
     needs: build
